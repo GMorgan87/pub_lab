@@ -27,12 +27,31 @@ class Pub
   def sell_drink(customer, drink)
     price = drink.price
     units = drink.units
-    if customer.can_afford(drink)
+
+    if too_drunk?(customer)
+      "Taxi for #{customer.name}"
+      return
+    end
+
+    if customer.can_afford(drink) && check_age(customer)
       customer.pay_money(price)
       take_money(price)
       customer.get_drunk(units)
     end
   end
+
+  def sell_food(customer, food)
+    price = food.price
+    rejuvination = food.rejuvination
+
+
+    if customer.can_afford(food)
+      customer.pay_money(price)
+      take_money(price)
+      customer.rejuvinate(rejuvination)
+    end
+  end
+
 
 
 end

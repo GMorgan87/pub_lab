@@ -9,8 +9,8 @@ class Customer
     @drunkenness = 0
   end
 
-  def can_afford(drink)
-    if @cash >= drink.price
+  def can_afford(item)
+    if @cash >= item.price
       return true
     end
     return false
@@ -23,6 +23,11 @@ class Customer
   def get_drunk(units)
     @drunkenness += units
   end
+
+  def rejuvinate(units)
+    @drunkenness -= units
+  end
+
 
 
 
