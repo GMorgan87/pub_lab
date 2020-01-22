@@ -46,7 +46,21 @@ class TestPub < Minitest::Test
     @pub.sell_drink(@customer1, @drink1)
     assert_equal(1003, @pub.cash_in_till())
     assert_equal(97, @customer1.cash)
+    assert_equal(2, @customer1.drunkenness)
   end
+
+  def test_too_drunk__true
+    @drink4 = Drink.new("Jura", 4, 22)
+    @pub.sell_drink(@customer1, @drink4)
+    assert_equal(true, @pub.too_drunk?(@customer1))
+  end
+
+  def test_too_drunk__false
+    @pub.sell_drink(@customer1, @drink1)
+    assert_equal(false, @pub.too_drunk?(@customer1))
+  end
+
+
 
 
 

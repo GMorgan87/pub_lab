@@ -1,12 +1,12 @@
 class Customer
 
-  attr_reader :name, :cash, :age, :drinks
+  attr_reader :name, :cash, :age, :drunkenness
 
   def initialize(name, cash, age)
     @name = name
     @cash = cash
     @age = age
-    # @drinks = []
+    @drunkenness = 0
   end
 
   def can_afford(drink)
@@ -20,9 +20,9 @@ class Customer
     @cash -= amount
   end
 
-  # def get_drink(drink)
-  #   @drinks.push(drink)
-  # end
+  def get_drunk(units)
+    @drunkenness += units
+  end
 
 
 
