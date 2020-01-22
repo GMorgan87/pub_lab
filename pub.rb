@@ -24,6 +24,14 @@ class Pub
     @till += amount
   end
 
+  def stock_count(drink)
+    return @drinks[drink]
+  end
+
+  def reduce_stock_count(drink)
+    @drinks[drink] -= 1
+  end
+
   def sell_drink(customer, drink)
     price = drink.price
     units = drink.units
@@ -37,6 +45,7 @@ class Pub
       customer.pay_money(price)
       take_money(price)
       customer.get_drunk(units)
+      reduce_stock_count(drink)
     end
   end
 

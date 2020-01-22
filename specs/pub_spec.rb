@@ -16,8 +16,13 @@ class TestPub < Minitest::Test
     @drink1 = Drink.new("Tenents", 3, 2)
     @drink2 = Drink.new("Jura", 4, 5)
     @drink3 = Drink.new("Moet", 5, 4)
+    @drink4 = Drink.new("Jura", 4, 22)
 
-    @drinks = [@drink1, @drink2, @drink3]
+    @drinks = {@drink1 => 5,
+               @drink2 => 5,
+               @drink3 => 5,
+               @drink4 => 5
+             }
 
     @pub = Pub.new("Chanter", 1000, @drinks)
 
@@ -50,10 +55,10 @@ class TestPub < Minitest::Test
     assert_equal(1003, @pub.cash_in_till())
     assert_equal(97, @customer1.cash)
     assert_equal(2, @customer1.drunkenness)
+    assert_equal(4, @pub.stock_count(@drink1))
   end
 
   def test_too_drunk__true
-    @drink4 = Drink.new("Jura", 4, 22)
     @pub.sell_drink(@customer1, @drink4)
     assert_equal(true, @pub.too_drunk?(@customer1))
   end
@@ -70,6 +75,13 @@ class TestPub < Minitest::Test
     assert_equal(-3, @customer1.drunkenness)
   end
 
+  def test_get_stock_count
+    assert_equal(5, @pub.stock_count(@drink1))
+  end
 
+  def test_reduce_stock_count
+    @pub.reduce_stock_count(@drink1)
+    assert_equal(4, @pub.stock_count(@drink1))
+  end
 
 end
