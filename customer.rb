@@ -6,7 +6,7 @@ class Customer
     @name = name
     @cash = cash
     @age = age
-    @drinks = []
+    # @drinks = []
   end
 
   def can_afford(drink)
@@ -20,7 +20,12 @@ class Customer
     @cash -= amount
   end
 
-  def get_drink(drink)
-    @drinks.push(drink)
-  end
+  # def get_drink(drink)
+  #   @drinks.push(drink)
+  # end
+
+
+
+
+
 end

@@ -11,4 +11,22 @@ class Pub
   def check_age(customer)
     return customer.age >= 18
   end
+
+  def cash_in_till()
+    return @till
+  end
+
+  def take_money(amount)
+    @till += amount
+  end
+
+  def sell_drink(customer, drink)
+    price = drink.price
+    if customer.can_afford(drink)
+      customer.pay_money(price)
+      take_money(price)
+    end
+  end
+
+
 end

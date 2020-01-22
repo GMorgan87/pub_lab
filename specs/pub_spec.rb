@@ -12,9 +12,9 @@ class TestPub < Minitest::Test
     @customer1 = Customer.new("Gareth", 100, 32)
     @customer2 = Customer.new("Alan", 80, 16)
 
-    @drink1 = Drink.new("Tenents", 3)
-    @drink2 = Drink.new("Jura", 4)
-    @drink3 = Drink.new("Moet", 5)
+    @drink1 = Drink.new("Tenents", 3, 2)
+    @drink2 = Drink.new("Jura", 4, 5)
+    @drink3 = Drink.new("Moet", 5, 4)
 
     @drinks = [@drink1, @drink2, @drink3]
 
@@ -32,5 +32,23 @@ class TestPub < Minitest::Test
   def test_check_age__false
     assert_equal(false, @pub.check_age(@customer2))
   end
+
+  def test_cash_in_till
+    assert_equal(1000, @pub.cash_in_till())
+  end
+
+  def test_take_money
+    @pub.take_money(3)
+    assert_equal(1003, @pub.cash_in_till())
+  end
+
+  def test_sell_drink
+    @pub.sell_drink(@customer1, @drink1)
+    assert_equal(1003, @pub.cash_in_till())
+    assert_equal(97, @customer1.cash)
+  end
+
+
+
 
 end
