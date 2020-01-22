@@ -26,7 +26,6 @@ class TestCustomer < Minitest::Test
   end
 
   def test_can_afford__true
-
     assert_equal(true, @customer1.can_afford(@drink))
   end
 
