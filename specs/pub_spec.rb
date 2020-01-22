@@ -84,4 +84,14 @@ class TestPub < Minitest::Test
     assert_equal(4, @pub.stock_count(@drink1))
   end
 
+  # def test_drink_stock_value
+  #   assert_equal(15, @pub.get_drink_stock_value(@drink1))
+  # end
+
+  def test_get_stock_value
+    assert_equal(80, @pub.get_stock_value)
+  end
+
+
+
 end

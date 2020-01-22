@@ -53,13 +53,21 @@ class Pub
     price = food.price
     rejuvination = food.rejuvination
 
-
     if customer.can_afford(food)
       customer.pay_money(price)
       take_money(price)
       customer.rejuvinate(rejuvination)
     end
   end
+
+  def get_stock_value()
+    total_value = 0
+    for drink in @drinks
+      total_value += drink[0].price * drink[1]
+    end
+    return total_value
+  end
+
 
 
 
